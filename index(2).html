@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Shreya Bedre - Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet"/>
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: linear-gradient(135deg, #6d214f, #d6a4a4, #f3e8ee);
+      color: #333;
+      animation: fadeIn 1.2s ease-in;
+      transition: background 0.5s, color 0.5s;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    nav {
+      background-color: #6d214f;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+
+    nav h2 {
+      color: #fff;
+      font-weight: 600;
+      font-size: 1.8rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.2rem;
+    }
+
+    .nav-links a {
+      color: #f3e8ee;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #d6a4a4;
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 1.8rem;
+      color: white;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem;
+      animation: popIn 1s ease-in-out;
+    }
+
+    @keyframes popIn {
+      from { transform: scale(0.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    header img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid #fff;
+      margin-bottom: 1rem;
+    }
+
+    header h1 {
+      font-size: 2.4rem;
+      color: #6d214f;
+    }
+
+    header p {
+      font-size: 1rem;
+    }
+
+    .accordion {
+      margin: 1.5rem;
+      background: #fff;
+      border-radius: 1rem;
+      overflow: hidden;
+      box-shadow: 0px 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .accordion-item {
+      border-bottom: 1px solid #ddd;
+    }
+
+    .accordion-header {
+      background: #d6a4a4;
+      color: #6d214f;
+      padding: 1rem;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+
+    .accordion-content {
+      display: none;
+      padding: 1rem;
+      background: #f3e8ee;
+    }
+
+    .accordion-content ul {
+      list-style: none;
+      padding-left: 1rem;
+    }
+
+    .accordion-content ul li::before {
+      content: "➤";
+      color: #6d214f;
+      padding-right: 0.5rem;
+    }
+
+    .certificate-img {
+      width: 100%;
+      max-width: 400px;
+      margin: 10px 0;
+      border: 2px solid #6d214f;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .certificate-img:hover {
+      transform: scale(1.05);
+    }
+
+    .contact a, .accordion-content a {
+      color: #6d214f;
+      text-decoration: none;
+    }
+
+    .contact a:hover, .accordion-content a:hover {
+      text-decoration: underline;
+    }
+
+    .social-links {
+      text-align: center;
+      margin: 2rem 0;
+      animation: fadeIn 2s ease-in;
+    }
+
+    .social-links a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1rem;
+      margin: 0 0.5rem;
+      padding: 0.5rem 1rem;
+      background-color: #6d214f;
+      border-radius: 30px;
+      transition: background-color 0.3s ease;
+    }
+
+    .social-links a:hover {
+      background-color: #4e1032;
+    }
+
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 50px;
+      height: 26px;
+    }
+
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      top: 0; left: 0;
+      right: 0; bottom: 0;
+      background-color: #ccc;
+      border-radius: 34px;
+      transition: .4s;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 20px; width: 20px;
+      left: 4px; bottom: 3px;
+      background-color: white;
+      border-radius: 50%;
+      transition: .4s;
+    }
+
+    input:checked + .slider {
+      background-color: #6d214f;
+    }
+
+    input:checked + .slider:before {
+      transform: translateX(24px);
+    }
+
+    /* Dark Mode Styles */
+    body.dark {
+      background: linear-gradient(135deg, #1a1a1a, #2d2d2d, #3e3e3e);
+      color: #eee;
+    }
+
+    body.dark nav {
+      background-color: #111;
+    }
+
+    body.dark .accordion-content {
+      background-color: #2e2e2e;
+    }
+
+    body.dark .accordion-header {
+      background: #444;
+      color: #fff;
+    }
+
+    body.dark .social-links a {
+      background-color: #333;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        background-color: #6d214f;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 100%;
+        padding: 1rem;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      header h1 {
+        font-size: 2rem;
+      }
+
+      header p {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <h2>Shreya</h2>
+    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+    <div class="nav-links" id="navLinks">
+      <a href="#about">About</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#contact">Contact</a>
+    </div>
+
+    <label class="switch">
+      <input type="checkbox" id="modeToggle">
+      <span class="slider round"></span>
+    </label>
+  </nav>
+
+  <header id="about">
+    <img src="shreyabedreprofile.jpg" alt="Shreya Bedre Photo"/>
+    <h1>Shreya Bedre</h1>
+    <span id="typed-text" style="color: #6d214f; font-weight: bold;"></span>
+    <p>B.Tech. - Mechanical Engineering | MIT AOE, Pune</p>
+  </header>
+
+  <div class="accordion">
+    <div class="accordion-item">
+      <div class="accordion-header" onclick="toggleAccordion(this)">Career Objective</div>
+      <div class="accordion-content">
+        <p>Motivated engineering student passionate about mechanical design and AI technologies, aiming to contribute to innovative projects.</p>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <div class="accordion-header" onclick="toggleAccordion(this)">Personal Details</div>
+      <div class="accordion-content">
+        <ul>
+          <li>Date of Birth: 15 July, 2005</li>
+          <li>Gender: Female</li>
+          <li>Marital Status: Single</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <div class="accordion-header" onclick="toggleAccordion(this)">Education</div>
+      <div class="accordion-content">
+        <ul>
+          <li>B.Tech. Mechanical Engineering, MIT AOE (2024-2028)</li>
+          <li>12th MSBSHSE, 89.97%</li>
+          <li>10th MSBSHSE, 91%</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <div class="accordion-header" onclick="toggleAccordion(this)">Skills</div>
+      <div class="accordion-content">
+        <p>AutoCAD, Fusion 360, Python, C, AI/ML</p>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <div class="accordion-header" onclick="toggleAccordion(this)">Projects</div>
+      <div class="accordion-content">
+        <p><strong>Fire Protecting System (FPS):</strong> Designed a fire safety system for vehicles using mist sprinklers and alarms to aid evacuation in emergencies.</p>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <div class="accordion-header" onclick="toggleAccordion(this)">Certifications</div>
+      <div class="accordion-content">
+        <ul>
+          <li>NASCOM - DIGITAL 101</li>
+          <li>CISCO - Python 1</li>
+          <img src="cisco1.png" alt="Cisco Python 1 Certificate" class="certificate-img" />
+          <li>CISCO - Python 2</li>
+          <img src="cisco2.png" alt="Cisco Python 2 Certificate" class="certificate-img" />
+        </ul>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <div class="accordion-header" onclick="toggleAccordion(this)">Hobbies & Languages</div>
+      <div class="accordion-content">
+        <p>Hobbies: Cooking, Public Speaking, Dancing, Drawing</p>
+        <p>Languages: English, Hindi, Marathi, German</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="contact" class="social-links">
+    <a href="tel:+917219473562">Call</a>
+    <a href="mailto:shreyabedre1507@gmail.com">Email</a>
+    <a href="https://www.instagram.com/shreyaa_bedre" target="_blank">Instagram</a>
+    <a href="https://www.linkedin.com/in/shreyaa-bedre" target="_blank">LinkedIn</a>
+    <a href="https://github.com/shreyabedre" target="_blank">Github</a>
+
+  </div>
+
+  <script>
+    const modeToggle = document.getElementById("modeToggle");
+    modeToggle.addEventListener("change", () => {
+      document.body.classList.toggle("dark");
+    });
+
+    var typed = new Typed("#typed-text", {
+      strings: ["Hi, I'm Shreya...", "Welcome to my portfolio!", "Let's build something amazing!"],
+      typeSpeed: 50,
+      backSpeed: 25,
+      loop: true
+    });
+
+    function toggleMenu() {
+      const nav = document.getElementById('navLinks');
+      nav.classList.toggle('active');
+    }
+
+    function toggleAccordion(element) {
+      const content = element.nextElementSibling;
+      content.style.display = content.style.display === 'block' ? 'none' : 'block';
+    }
+  </script>
+</body>
+</html>
